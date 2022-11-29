@@ -62,7 +62,7 @@ jobs:
     name: Build C++ Libs MacOS
     runs-on: macos-latest
     env:
-      MACOSX_DEPLOYMENT_TARGET: "10.11"
+      MACOSX_DEPLOYMENT_TARGET: "11.0"
     steps:
       - name: Checkout Arrow
         uses: actions/checkout@v2
