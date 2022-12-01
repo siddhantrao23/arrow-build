@@ -60,7 +60,7 @@ jobs:
 
   build-cpp-macos:
     name: Build C++ Libs MacOS
-    runs-on: macos-latest
+    runs-on: macos-12
     env:
       MACOSX_DEPLOYMENT_TARGET: "10.11"
     steps:
