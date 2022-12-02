@@ -60,7 +60,7 @@ jobs:
 
   build-cpp-macos:
     name: Build C++ Libs MacOS
-    runs-on: macos-10.15
+    runs-on: macos-12
     env:
       MACOSX_DEPLOYMENT_TARGET: "10.11"
     steps:
@@ -82,7 +82,9 @@ jobs:
         run: pip install -e arrow/dev/archery[all]
 
       - name: Install Dependencies
-        run: brew bundle --file=arrow/cpp/Brewfile
+        run: |
+          brew install llvm@12 \
+          brew bundle --file=arrow/cpp/Brewfile
       - name: Build C Data Interface lib
         run: |
           set -e
