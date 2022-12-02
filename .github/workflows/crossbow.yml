@@ -84,6 +84,7 @@ jobs:
       - name: Install Dependencies
         run: |
           brew install llvm@12
+          echo 'export PATH="/usr/local/opt/llvm@12/bin:$PATH"' >> /Users/runner/.bash_profile
           brew bundle --file=arrow/cpp/Brewfile
       - name: Build C Data Interface lib
         run: |
