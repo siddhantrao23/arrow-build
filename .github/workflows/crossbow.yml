@@ -60,7 +60,7 @@ jobs:
 
   build-cpp-macos:
     name: Build C++ Libs MacOS
-    runs-on: macos-12
+    runs-on: macos-11
     env:
       MACOSX_DEPLOYMENT_TARGET: "10.11"
     steps:
@@ -83,8 +83,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          brew install llvm@12
-          echo 'export PATH="/usr/local/opt/llvm@12/bin:$PATH"' >> /Users/runner/.bash_profile
+          brew install llvm@11
+          echo 'export PATH="/usr/local/opt/llvm@11/bin:$PATH"' >> /Users/runner/.bash_profile
           brew bundle --file=arrow/cpp/Brewfile
       - name: Build C Data Interface lib
         run: |
