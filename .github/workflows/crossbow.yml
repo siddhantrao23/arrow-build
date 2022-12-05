@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: siddhantrao23/arrow
-          ref: 1100319bb236a5314c58f1bfa193130ba0f00231
+          ref: e463e59edf249b753aa26f7b66a8b0e423d10cf5
           submodules: recursive
 
       - name: Set up Python
@@ -70,7 +70,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: siddhantrao23/arrow
-          ref: 1100319bb236a5314c58f1bfa193130ba0f00231
+          ref: e463e59edf249b753aa26f7b66a8b0e423d10cf5
           submodules: recursive
 
       - name: Set up Python
@@ -85,7 +85,7 @@ jobs:
         run: |
           brew install llvm@12
           echo 'export PATH="/usr/local/opt/llvm@12/bin:$PATH"' >> /Users/runner/.bash_profile
-          source ~/.bash_profile
+          source /Users/runner/.bash_profile
           echo $PATH
           brew bundle --file=arrow/cpp/Brewfile
       - name: Build C Data Interface lib
@@ -121,7 +121,7 @@ jobs:
           fetch-depth: 0
           path: arrow
           repository: siddhantrao23/arrow
-          ref: 1100319bb236a5314c58f1bfa193130ba0f00231
+          ref: e463e59edf249b753aa26f7b66a8b0e423d10cf5
           submodules: recursive
 
       - name: Download Linux C++ Libraries
