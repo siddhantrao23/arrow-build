@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: siddhantrao23/arrow
-          ref: e463e59edf249b753aa26f7b66a8b0e423d10cf5
+          ref: 5de20220f8575e57aeca958d3f87bf387687ee8a
           submodules: recursive
 
       - name: Set up Python
@@ -70,7 +70,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: siddhantrao23/arrow
-          ref: e463e59edf249b753aa26f7b66a8b0e423d10cf5
+          ref: 5de20220f8575e57aeca958d3f87bf387687ee8a
           submodules: recursive
 
       - name: Set up Python
@@ -121,7 +121,7 @@ jobs:
           fetch-depth: 0
           path: arrow
           repository: siddhantrao23/arrow
-          ref: e463e59edf249b753aa26f7b66a8b0e423d10cf5
+          ref: 5de20220f8575e57aeca958d3f87bf387687ee8a
           submodules: recursive
 
       - name: Download Linux C++ Libraries
