@@ -76,14 +76,8 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ubuntu-shared-lib
-      - name: Download MacOS C++ Library
-        uses: actions/download-artifact@v2
-        with:
-          name: macos-shared-lib
       - name: Descompress artifacts
-        run: |
-          tar -xvzf arrow-shared-libs-macos.tar.gz
-          tar -xvzf arrow-shared-libs-linux.tar.gz
+        run: tar -xvzf arrow-shared-libs-linux.tar.gz
       - name: Copy the macos custom dylibs
         run: |
           cp arrow/cpp/libgandiva_jni.dylib arrow/java-dist/
