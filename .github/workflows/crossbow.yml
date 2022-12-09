@@ -58,57 +58,10 @@ jobs:
           name: ubuntu-shared-lib
           path: arrow-shared-libs-linux.tar.gz
 
-  build-cpp-macos:
-    name: Build C++ Libs MacOS
-    runs-on: macos-latest
-    env:
-      MACOSX_DEPLOYMENT_TARGET: "10.11"
-    steps:
-      - name: Checkout Arrow
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-          path: arrow
-          repository: siddhantrao23/arrow
-          ref: 4358f585e2e5b2eebc5d7bef28afe5fe9c91c7e3
-          submodules: recursive
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.8
-      - name: Install Archery
-        shell: bash
-        run: pip install -e arrow/dev/archery[all]
-
-      - name: Install Dependencies
-        run: brew bundle --file=arrow/cpp/Brewfile
-      - name: Build C Data Interface lib
-        run: |
-          set -e
-          arrow/ci/scripts/java_cdata_build.sh \
-            $GITHUB_WORKSPACE/arrow \
-            $GITHUB_WORKSPACE/arrow/java-native-build \
-            $GITHUB_WORKSPACE/arrow/java-dist
-      - name: Build C++ Libs
-        run: |
-          set -e
-          arrow/ci/scripts/java_jni_macos_build.sh \
-            $GITHUB_WORKSPACE/arrow \
-            $GITHUB_WORKSPACE/arrow/cpp-build \
-            $GITHUB_WORKSPACE/arrow/java-dist
-      - name: Compress into single artifact
-        run: tar -cvzf arrow-shared-libs-macos.tar.gz arrow/java-dist/
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: macos-shared-lib
-          path: arrow-shared-libs-macos.tar.gz
-
   package-jars:
     name: Build Jar Files
     runs-on: macos-latest
-    needs: [build-cpp-macos, build-cpp-ubuntu]
+    needs: [build-cpp-ubuntu]
     steps:
       - name: Checkout Arrow
         uses: actions/checkout@v2
