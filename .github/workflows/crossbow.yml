@@ -46,10 +46,7 @@ jobs:
           python-version: 3.8
       - name: Install Archery
         shell: bash
-        run: |
-          ls arrow/
-          ls arrow/cpp/
-          pip install -e arrow/dev/archery[all]
+        run: pip install -e arrow/dev/archery[all]
 
       - name: Build C++ Libs
         run: archery docker run java-jni-manylinux-2014
@@ -83,11 +80,10 @@ jobs:
         run: tar -xvzf arrow-shared-libs-linux.tar.gz
       - name: Copy the macos custom dylibs
         run: |
-          ls arrow/
           ls arrow/cpp
-          cp arrow/cpp/libgandiva_jni.dylib arrow/java-dist/
-          cp arrow/cpp/libarrow_dataset_jni.dylib arrow/java-dist/
-          cp arrow/cpp/libarrow_orc_jni.dylib arrow/java-dist/
+          cp $GITHUB_WORKSPACE/arrow/cpp/libgandiva_jni.dylib arrow/java-dist/
+          cp $GITHUB_WORKSPACE/arrow/cpp/libarrow_dataset_jni.dylib arrow/java-dist/
+          cp $GITHUB_WORKSPACE/arrow/cpp/libarrow_orc_jni.dylib arrow/java-dist/
       - name: Test that Shared Libraries Exist
         run: |
           test -f arrow/java-dist/libarrow_cdata_jni.dylib
