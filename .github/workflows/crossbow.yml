@@ -78,6 +78,13 @@ jobs:
           name: ubuntu-shared-lib
       - name: Descompress artifacts
         run: tar -xvzf arrow-shared-libs-linux.tar.gz
+      - name: Build C Data Interface lib
+        run: |
+          set -e
+          arrow/ci/scripts/java_cdata_build.sh \
+            $GITHUB_WORKSPACE/arrow \
+            $GITHUB_WORKSPACE/arrow/java-native-build \
+            $GITHUB_WORKSPACE/arrow/java-dist
       - name: Copy the macos custom dylibs
         run: |
           cp -L $GITHUB_WORKSPACE/arrow/cpp/libgandiva_jni.dylib arrow/java-dist/
