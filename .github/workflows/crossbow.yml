@@ -37,7 +37,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: siddhantrao23/arrow
-          ref: 5b0a435a85d90fe544f3904c2edb21d537622856
+          ref: eaf5c4cf129fa4703e575eda15eb3294f727de9f
           submodules: recursive
 
       - name: Set up Python
@@ -70,7 +70,7 @@ jobs:
           fetch-depth: 1
           path: arrow
           repository: siddhantrao23/arrow
-          ref: 5b0a435a85d90fe544f3904c2edb21d537622856
+          ref: eaf5c4cf129fa4703e575eda15eb3294f727de9f
           submodules: recursive
 
       - name: Set up Python
@@ -109,7 +109,7 @@ jobs:
           fetch-depth: 0
           path: arrow
           repository: siddhantrao23/arrow
-          ref: 5b0a435a85d90fe544f3904c2edb21d537622856
+          ref: eaf5c4cf129fa4703e575eda15eb3294f727de9f
           submodules: recursive
 
       - name: Download Linux C++ Libraries
@@ -126,9 +126,9 @@ jobs:
           tar -xvzf arrow-shared-libs-linux.tar.gz
       - name: Copy the macos custom dylibs
         run: |
-          cp -L $GITHUB_WORKSPACE/arrow/cpp/libgandiva_jni.dylib arrow/java-dist/
-          cp -L $GITHUB_WORKSPACE/arrow/cpp/libarrow_dataset_jni.dylib arrow/java-dist/
-          cp -L $GITHUB_WORKSPACE/arrow/cpp/libarrow_orc_jni.dylib arrow/java-dist/
+          cp -L $GITHUB_WORKSPACE/arrow/out/libgandiva_jni.dylib arrow/java-dist/
+          cp -L $GITHUB_WORKSPACE/arrow/out/libarrow_dataset_jni.dylib arrow/java-dist/
+          cp -L $GITHUB_WORKSPACE/arrow/out/libarrow_orc_jni.dylib arrow/java-dist/
       - name: Test that Shared Libraries Exist
         run: |
           test -f arrow/java-dist/libarrow_cdata_jni.dylib
